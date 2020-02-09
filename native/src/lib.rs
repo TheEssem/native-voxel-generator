@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate neon;
+extern crate neon_runtime;
 extern crate voxel_worldgen;
 extern crate rand;
 extern crate nalgebra;
@@ -10,11 +11,11 @@ use voxel_worldgen::rnd::RngBuilder;
 
 use nalgebra::Point2;
 
-use neon_runtime::call;
-use neon_runtime::primitive::integer;
+//use neon_runtime::call;
+//use neon_runtime::primitive::integer;
 use neon::result::JsResult;
 use neon::types::JsObject;
-use neon::prelude::JsBuffer;
+use neon::prelude::*;
 use neon::handle::Handle;
 use neon::object::Object;
 
