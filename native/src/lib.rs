@@ -8,13 +8,13 @@ extern crate noise;
 use voxel_worldgen::generators;
 use voxel_worldgen::rnd::RngBuilder;
 
-use nalgebra::Pnt2;
+use nalgebra::Point2;
 
-use neon::vm::{Call, JsResult};
-use neon::js::{JsInteger, JsObject};
-use neon::js::binary::{ JsBuffer };
+use neon::result::{Call, JsResult};
+use neon::types::{JsInteger, JsObject};
+use neon::prelude::JsBuffer;
 use neon::mem::Handle;
-use neon::js::Object;
+use neon::object::Object;
 
 fn js_generate_chunk(call: Call) -> JsResult<JsBuffer> {
   let scope = call.scope;
