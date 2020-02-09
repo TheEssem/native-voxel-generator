@@ -10,10 +10,12 @@ use voxel_worldgen::rnd::RngBuilder;
 
 use nalgebra::Point2;
 
-use neon::result::{Call, JsResult};
-use neon::types::{JsInteger, JsObject};
+use neon_runtime::call;
+use neon_runtime::primitive::integer;
+use neon::result::JsResult;
+use neon::types::JsObject;
 use neon::prelude::JsBuffer;
-use neon::mem::Handle;
+use neon::handle::Handle;
 use neon::object::Object;
 
 fn js_generate_chunk(call: Call) -> JsResult<JsBuffer> {
@@ -25,7 +27,7 @@ fn js_generate_chunk(call: Call) -> JsResult<JsBuffer> {
 
   let x = try!(try!(call.arguments.require(scope, 1)).check::<JsInteger>());
   let y = try!(try!(call.arguments.require(scope, 2)).check::<JsInteger>());
-  let chunk_pos = Pnt2::new(x.value() as i32, y.value() as i32);
+  let chunk_pos = Point2::new(x.value() as i32, y.value() as i32);
 
   let chunk = generators::vanilla::generate_chunk(&world_gen_state, chunk_pos);
 
